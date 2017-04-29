@@ -1,6 +1,7 @@
 
 package connect.four.board;
 
+import connect.four.player.ConsolePlayer;
 import connect.four.player.Player;
 import java.util.Arrays;
 
@@ -33,7 +34,25 @@ public class Board implements ReadWritableBoard {
             }
         }
     }
-    public Player whoPlayed(int x, int y) {
+    
+    // Constructor added for testing purpose
+    public Board(ConsolePlayer[][] layout) {
+    	m_contents = new Player[layout.length][layout[0].length];
+        for(int i = 0; i < layout.length; i++){
+        	for(int j = 0; j < layout[i].length; j++){
+        		m_contents[i][j] = layout[i][j];
+        	}
+        }        
+        m_moveCount = 0;
+    }
+    
+    
+    
+    
+    
+    
+    
+	public Player whoPlayed(int x, int y) {
         return m_contents[x][y];
     }
     public int getWidth() {
