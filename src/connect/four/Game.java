@@ -25,19 +25,24 @@ public class Game implements ScoreChart {
         m_board = board;
         m_inRow = inRow;
     }
+    
     public void start() {
         int first = (new Random()).nextInt(m_players.length);
         performPlay(first);
     }
+    
     public void registerListener(ScoreChart.Listener l) {
         m_listeners.add(l);
     }
+    
     public void unregisterListener(ScoreChart.Listener l) {
         m_listeners.remove(l);
     }
+    
     public List<Player> getPlayers() {
         return Arrays.asList(m_players);
     }
+    
     public int getScore(Player p) {
         int pos = -1;
         int l = m_players.length;
@@ -46,6 +51,7 @@ public class Game implements ScoreChart {
         }
         return m_scores[pos];
     }
+    
     void performPlay(final int player) {
         m_currentPlayer = player;
         ReadWritableBoard controlledBoard = new ReadWritableBoard() {
@@ -101,11 +107,11 @@ public class Game implements ScoreChart {
     }
 
     public int getInRow() {
-	return m_inRow;
+    	return m_inRow;
     }
 
     public ReadableBoard getBoard() {
-	return m_board;
+    	return m_board;
     }
 
     public static Player detectWinner(ReadableBoard board, int inRow) {
